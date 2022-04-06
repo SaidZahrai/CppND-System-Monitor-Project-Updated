@@ -1,0 +1,32 @@
+#include "ncurses_display.h"
+#include "system.h"
+
+#include "linux_parser.h"
+#include "format.h"
+#include <iostream>
+#include <vector>
+
+int main() {
+  // std::cout << "Operative system: " << LinuxParser::OperatingSystem() << "\n";
+  // std::cout << "Kernel: " << LinuxParser::Kernel() << "\n";
+  // std::vector<int> pids = LinuxParser::Pids();
+  // for (auto i : pids) std::cout << i << "\n";
+  // std::cout << "Memory utilization: " << LinuxParser::MemoryUtilization() << "\n";
+  // std::cout << "System Uptime: " << LinuxParser::UpTime() << "\n";
+  // std::cout << "System jiffies: " << LinuxParser::Jiffies() << "\n";
+  // std::cout << "Process[0] active jiffies: " << LinuxParser::ActiveJiffies(pids[0]) << "\n";
+  
+  // std::cout << "System active jiffies: " << LinuxParser::ActiveJiffies() << "\n";
+  // std::cout << "System idle jiffies: " << LinuxParser::IdleJiffies() << "\n";
+  // std::cout << "Total processes: " << LinuxParser::TotalProcesses() << "\n";
+  // std::cout << "Running processes: " << LinuxParser::RunningProcesses() << "\n";
+  // std::cout << "Process[0] command: " << LinuxParser::Command(pids[0]) << "\n";
+  // std::cout << "Process[0] Memory usage: " << LinuxParser::Ram(pids[0]) << "\n";
+  // std::cout << "Process[0] Uid: " << LinuxParser::Uid(pids[0]) << "\n";
+  // std::cout << "Process[0] Username: " << LinuxParser::User(pids[0]) << "\n";
+  // std::cout << "Process[0] Uptime: " << LinuxParser::UpTime(pids[0]) << "\n";
+  // std::cout << Format::ElapsedTime(123*3600+13*60+27) << " must be 123:13:27" << "\n";
+  // return 0;
+  System system;
+  NCursesDisplay::Display(system);
+}

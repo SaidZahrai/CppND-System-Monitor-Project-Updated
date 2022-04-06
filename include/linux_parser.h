@@ -52,6 +52,11 @@ std::string Ram(int pid);
 std::string Uid(int pid);
 std::string User(int pid);
 long int UpTime(int pid);
+
+// Added for calculation of the process CPU usage according to the scheme presented in 
+// https://stackoverflow.com/questions/16726779/how-do-i-get-the-total-cpu-usage-of-an-application-from-proc-pid-stat/16736599#16736599
+long StartTime(int pid);
+
 };  // namespace LinuxParser
 
 #endif

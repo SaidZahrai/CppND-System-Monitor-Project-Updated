@@ -1,41 +1,66 @@
 # CppND-System-Monitor
 
-Starter code for System Monitor Project in the Object Oriented Programming Course of the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213). 
+This is the second project in Udacity C++ nano degree. The starter code can be found in [Udacity's github repository](https://github.com/udacity/CppND-System-Monitor-Project-Updated).
 
-Follow along with the classroom lesson to complete the project!
+The starter code has been completed according to the project instructions and the lessons in the course. The final monitor program output is 
 
 ![System Monitor](images/monitor.png)
 
-## Udacity Linux Workspace
-[Udacity](https://www.udacity.com/) provides a browser-based Linux [Workspace](https://engineering.udacity.com/creating-a-gpu-enhanced-virtual-desktop-for-udacity-497bdd91a505) for students. 
+## Compiling, building application and running the system monitoe
 
-You are welcome to develop this project on your local machine, and you are not required to use the Udacity Workspace. However, the Workspace provides a convenient and consistent Linux development environment we encourage you to try.
+To build and run the application follow the following steps:
+1. Clone the repository with 
+```
+git clone https://github.com/SaidZahrai/CppND-System-Monitor-Project-Updated .
+```
 
-## ncurses
-[ncurses](https://www.gnu.org/software/ncurses/) is a library that facilitates text-based graphical output in the terminal. This project relies on ncurses for display output.
+2. Go to the cloned directory
+```
+cd CppND-System-Monitor-Project-Updated
+```
 
-Within the Udacity Workspace, `.student_bashrc` automatically installs ncurses every time you launch the Workspace.
+3. Build the application
+```
+make build
+```
 
-If you are not using the Workspace, install ncurses within your own Linux environment: `sudo apt install libncurses5-dev libncursesw5-dev`
+4. Run the system monitor
+```
+./build/monitor
+```
+
+5. Stop monitoring with <CNTL> C. 
 
 ## Make
-This project uses [Make](https://www.gnu.org/software/make/). The Makefile has four targets:
-* `build` compiles the source code and generates an executable
+As noticed, the project uses [Make](https://www.gnu.org/software/make/). In addition to `build`, the Makefile has three more targets:
 * `format` applies [ClangFormat](https://clang.llvm.org/docs/ClangFormat.html) to style the source code
 * `debug` compiles the source code and generates an executable, including debugging symbols
 * `clean` deletes the `build/` directory, including all of the build artifacts
 
-## Instructions
+## Notes on implementation
 
-1. Clone the project repository: `git clone https://github.com/udacity/CppND-System-Monitor-Project-Updated.git`
+The implementation simply follows the instructions. I noticed that when a process is stopped, there will be a risk for having incorrect inputs. To avoid problems in conversion between string and numbers, I used the following two methods:
 
-2. Build the project: `make build`
+```
+long safe_stol(string l){
+  long value = 0;
+  try{
+    value = std::stol(l);
+  }
+  catch (...)
+  {}
+  return value;
+}
 
-3. Run the resulting executable: `./build/monitor`
-![Starting System Monitor](images/starting_monitor.png)
+int safe_stoi(string l){
+  int value = 0;
+  try{
+    value = std::stoi(l);
+  }
+  catch (...)
+  {}
+  return value;
+}
 
-4. Follow along with the lesson.
 
-5. Implement the `System`, `Process`, and `Processor` classes, as well as functions within the `LinuxParser` namespace.
-
-6. Submit!
+```
